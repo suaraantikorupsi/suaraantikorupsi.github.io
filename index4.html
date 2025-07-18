@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suara Antikorupsi - Bersama Suara Perubahan</title>
+    <link rel="icon" href="Suara Antikorupsi.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #152a77;
+            --accent-orange: #ec7404;
+            --soft-white: #f8f9fa;
+            --light-gray: #e9ecef;
+            --medium-gray: #adb5bd;
+            --dark-gray: #495057;
+            --text-dark: #212529;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--soft-white);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            font-size: 0.95rem;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: var(--soft-white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-img {
+            height: 60px; /* Diperbesar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo-img img {
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+        }
+        
+        .logo-text span {
+            color: var(--accent-orange);
+            font-weight: 500;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-orange);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--accent-orange);
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+            z-index: 1001;
+        }
+        
+        .mobile-menu.close {
+            display: none;
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            color: white;
+            z-index: 1002;
+        }
+        
+        /* Mobile menu styles */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: var(--primary-blue);
+            z-index: 1001;
+            transition: var(--transition);
+            padding: 80px 30px 30px;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .mobile-nav.active {
+            right: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+        
+        .mobile-nav ul li a:hover {
+            color: var(--accent-orange);
+            padding-left: 10px;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)), 
+                        url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23152a77" fill-opacity="0.03" d="M0,160L48,181.3C96,203,192,245,288,234.7C384,224,480,160,576,149.3C672,139,768,181,864,181.3C960,181,1056,139,1152,117.3C1248,96,1344,96,1392,96L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: wave 20s linear infinite;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .hero h1 {
+            font-family: 'Raleway', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+        
+        .hero h1 span.antikorupsi {
+            color: var(--primary-blue);
+            position: relative;
+        }
+        
+        .hero h1 span.antikorupsi::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(236, 116, 4, 0.25);
+            z-index: -1;
+        }
+        
+        .hero h1 span.perubahan {
+            color: var(--accent-orange);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto 40px;
+            color: var(--dark-gray);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-orange);
+            color: white;
+            padding: 14px 36px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            box-shadow: 0 6px 20px rgba(236, 116, 4, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button:hover {
+            background: var(--primary-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(21, 42, 119, 0.3);
+        }
+        
+        .hero-features {
+            display: flex;
+            gap: 30px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 25px;
+            width: 220px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+            text-align: center;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+            border-color: rgba(236, 116, 4, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+        
+        .feature-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+            color: var(--dark-gray);
+        }
+        
+        /* Programs Section */
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin: 80px 0 50px;
+            position: relative;
+            color: var(--primary-blue);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-orange);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+        }
+        
+        .programs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.07);
+            transition: var(--transition);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-orange) 100%);
+            opacity: 0;
+            z-index: -1;
+            transition: var(--transition);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+        }
+        
+        .program-header {
+            display: flex;
+            align-items: center;
+            padding: 25px;
+            gap: 20px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .program-logo {
+            width: 80px; /* Diperbesar */
+            height: 80px; /* Diperbesar */
+            background: var(--soft-white);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .program-logo img {
+            max-width: 65px; /* Diperbesar */
+            max-height: 65px; /* Diperbesar */
+        }
+        
+        .program-header-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--primary-blue);
+        }
+        
+        .program-header-content p {
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        .program-content {
+            padding: 25px;
+        }
+        
+        .program-content p {
+            margin-bottom: 25px;
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+        }
+        
+        .program-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--accent-orange);
+            padding: 10px 0;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .program-button::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 8px;
+            left: 0;
+            background: var(--accent-orange);
+            transition: var(--transition);
+        }
+        
+        .program-button:hover {
+            color: var(--primary-blue);
+            gap: 12px;
+        }
+        
+        .program-button:hover::after {
+            width: 100%;
+        }
+        
+        /* Warna hover khusus untuk setiap program */
+        .program-card.program-jnba:hover {
+            background: linear-gradient(135deg, #f24d2a, #14a49c);
+        }
+        
+        .program-card.program-jnba:hover .program-header-content h3,
+        .program-card.program-jnba:hover .program-header-content p,
+        .program-card.program-jnba:hover .program-content p,
+        .program-card.program-jnba:hover .program-button {
+            color: white;
+        }
+        
+        .program-card.program-jnba:hover .program-button:hover {
+            color: #ffd700;
+        }
+        
+        .program-card.program-benar:hover {
+            background: linear-gradient(135deg, #53c3b3, #2e3a59);
+        }
+        
+        .program-card.program-benar:hover .program-header-content h3,
+        .program-card.program-benar:hover .program-header-content p,
+        .program-card.program-benar:hover .program-content p,
+        .program-card.program-benar:hover .program-button {
+            color: white;
+        }
+        
+        .program-card.program-benar:hover .program-button:hover {
+            color: #ffd700;
+        }
+        
+        .program-card.program-pariwara:hover {
+            background: linear-gradient(135deg, #74a3db, #fce484);
+        }
+        
+        .program-card.program-pariwara:hover .program-header-content h3,
+        .program-card.program-pariwara:hover .program-header-content p,
+        .program-card.program-pariwara:hover .program-content p,
+        .program-card.program-pariwara:hover .program-button {
+            color: #333;
+        }
+        
+        .program-card.program-pariwara:hover .program-button:hover {
+            color: #ff6b00;
+        }
+        
+        .program-card.program-acffest:hover {
+            background: linear-gradient(135deg, #ff2651, #4a2cc3);
+        }
+        
+        .program-card.program-acffest:hover .program-header-content h3,
+        .program-card.program-acffest:hover .program-header-content p,
+        .program-card.program-acffest:hover .program-content p,
+        .program-card.program-acffest:hover .program-button {
+            color: white;
+        }
+        
+        .program-card.program-acffest:hover .program-button:hover {
+            color: #ffd700;
+        }
+        
+        .program-card.program-lebihdekat:hover {
+            background: linear-gradient(135deg, #009646, #ffd900);
+        }
+        
+        .program-card.program-lebihdekat:hover .program-header-content h3,
+        .program-card.program-lebihdekat:hover .program-header-content p,
+        .program-card.program-lebihdekat:hover .program-content p,
+        .program-card.program-lebihdekat:hover .program-button {
+            color: #333;
+        }
+        
+        .program-card.program-lebihdekat:hover .program-button:hover {
+            color: #ff6b00;
+        }
+        
+        /* Social Media Section */
+        .social-media {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1a3aa0 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            margin-top: 100px;
+        }
+        
+        .social-media::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.03" d="M0,64L48,90.7C96,117,192,171,288,181.3C384,192,480,160,576,128C672,96,768,64,864,58.7C960,53,1056,75,1152,101.3C1248,128,1344,160,1392,176L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: waveReverse 20s linear infinite;
+        }
+        
+        .social-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title.light {
+            color: white;
+        }
+        
+        .section-title.light::after {
+            background: var(--accent-orange);
+        }
+        
+        .section-subtitle.light {
+            color: rgba(255, 255, 255, 0.85);
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .social-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-color: var(--accent-orange);
+        }
+        
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+        
+        .social-card:hover .social-icon {
+            transform: scale(1.1);
+            color: var(--accent-orange);
+        }
+        
+        .social-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+        }
+        
+        .social-card p {
+            font-weight: 500;
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            color: var(--accent-orange);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            color: var(--primary-blue);
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--soft-white);
+            color: var(--text-dark);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--primary-blue);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-orange);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+            font-size: 0.95rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-orange);
+            padding-left: 5px;
+        }
+        
+        .footer-column ul li a i {
+            width: 20px;
+            color: var(--primary-blue);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+        }
+        
+        .newsletter-form button {
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--primary-blue);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            margin-top: 50px;
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--light-gray);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes wave {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: 1000px;
+            }
+        }
+        
+        @keyframes waveReverse {
+            0% {
+                background-position-x: 1000px;
+            }
+            100% {
+                background-position-x: 0;
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-features {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .feature-card {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .program-logo {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .program-logo img {
+                max-width: 55px;
+                max-height: 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-img">
+                    <!-- Logo placeholder - akan diganti dengan file gambar -->
+                    <img src="Suara Antikorupsi.png" alt="Logo Suara Antikorupsi">
+                </div>
+                <div class="logo-text">Suara <span>Antikorupsi</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#programs">Program</a></li>
+                    <li><a href="#media">Media Sosial</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="overlay" id="overlay"></div>
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-menu close" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </div>
+        <ul>
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#programs">Program</a></li>
+            <li><a href="#media">Media Sosial</a></li>
+            <li><a href="#about">Tentang</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                <span class="antikorupsi">Suara Antikorupsi KPK RI</span><br>
+                <span class="perubahan">Bersama Suara Perubahan</span>
+            </h1>
+            <p>Bergabunglah dalam gerakan edukasi dan kampanye antikorupsi untuk membangun bangsa yang lebih berintegritas dan bebas korupsi.</p>
+            <a href="#programs" class="cta-button">Jelajahi Kampanye <i class="fas fa-arrow-right"></i></a>
+            
+            <div class="hero-features">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Edukasi</h3>
+                    <p>Membangun kesadaran masyarakat tentang bahaya korupsi</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Kolaborasi</h3>
+                    <p>Bekerja sama dengan berbagai pihak untuk pemberantasan korupsi</p>
+                </div>
+                
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3>Kreativitas</h3>
+                    <p>Menyampaikan pesan melalui media kreatif dan kontemporer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs">
+        <h2 class="section-title animate-on-scroll">Program Kampanye</h2>
+        <p class="section-subtitle animate-on-scroll">Berbagai inisiatif untuk membangun budaya antikorupsi di Indonesia</p>
+        
+        <div class="programs">
+            <!-- Program 1: JNBA -->
+            <div class="program-card animate-on-scroll program-jnba">
+                <div class="program-header">
+                    <div class="program-logo">
+                        <img src="JNBA.png" alt="JNBA Logo">
+                    </div>
+                    <div class="program-header-content">
+                        <h3>Jelajah Negeri Bangun Antikorupsi</h3>
+                        <p>Roadshow Festival Edukasi</p>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <p>Festival edukasi antikorupsi ke daerah-daerah untuk membangun kesadaran masyarakat tentang pentingnya integritas dan pemberantasan korupsi.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLG39G_eK9FJNFb5J5atlEYbQDoCEfDllz" target="_blank" class="program-button">
+                        Lihat Program <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 2: Benar-Benar Podcast -->
+            <div class="program-card animate-on-scroll program-benar">
+                <div class="program-header">
+                    <div class="program-logo">
+                        <img src="Benar2.png" alt="Benar-Benar Podcast Logo">
+                    </div>
+                    <div class="program-header-content">
+                        <h3>Benar-Benar Podcast</h3>
+                        <p>Diskusi Antikorupsi untuk Anak Muda</p>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <p>Podcast bersama KOL atau tokoh menarik untuk anak muda dengan tema antikorupsi dalam format yang santai dan inspiratif.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLG39G_eK9FJM4FYZUG_uP8rsOf_FW3N3F" target="_blank" class="program-button">
+                        Tonton Sekarang <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 3: Pariwara Antikorupsi -->
+            <div class="program-card animate-on-scroll program-pariwara">
+                <div class="program-header">
+                    <div class="program-logo">
+                        <img src="Pariwara.png" alt="Pariwara Antikorupsi Logo">
+                    </div>
+                    <div class="program-header-content">
+                        <h3>Pariwara Antikorupsi</h3>
+                        <p>Kompetisi Kreatif Edukasi</p>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <p>Edukasi dan kompetisi iklan antikorupsi bersama Pemda dan BUMN untuk menciptakan konten kreatif yang menginspirasi perubahan.</p>
+                    <a href="https://pariwara.kpk.go.id" target="_blank" class="program-button">
+                        Ikuti Kompetisi <i class="fas fa-trophy"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 4: ACFFEST -->
+            <div class="program-card animate-on-scroll program-acffest">
+                <div class="program-header">
+                    <div class="program-logo">
+                        <img src="ACFFEST.png" alt="ACFFEST Logo">
+                    </div>
+                    <div class="program-header-content">
+                        <h3>Anti-corruption Film Festival</h3>
+                        <p>Festival Film Bertema Integritas</p>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <p>Festival film bertema antikorupsi untuk mempromosikan nilai-nilai integritas melalui karya sinematik yang inspiratif.</p>
+                    <a href="https://acffest.com" target="_blank" class="program-button">
+                        Kunjungi Website <i class="fas fa-globe"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 5: Lebih Dekat -->
+            <div class="program-card animate-on-scroll program-lebihdekat">
+                <div class="program-header">
+                    <div class="program-logo">
+                        <img src="Lebih Dekat.png" alt="Lebih Dekat Logo">
+                    </div>
+                    <div class="program-header-content">
+                        <h3>Lebih Dekat</h3>
+                        <p>Bincang dengan Tokoh Inspiratif</p>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <p>Bincang hangat dengan tokoh inspiratif yang berintegritas dan berdedikasi dalam memerangi korupsi di berbagai bidang.</p>
+                    <a href="https://www.youtube.com/playlist?list=PLG39G_eK9FJP4kxGnT1RF4IMOAyCq4Cil" target="_blank" class="program-button">
+                        Tonton Sekarang <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Program 6: Konten Edukasi -->
+            <div class="program-card animate-on-scroll">
+                <div class="program-header">
+                    <div class="program-logo">
+                        <i class="fas fa-book-open" style="font-size: 2.5rem; color: var(--primary-blue);"></i>
+                    </div>
+                    <div class="program-header-content">
+                        <h3>Konten Edukasi & Entertainment</h3>
+                        <p>Konten Timeless Antikorupsi</p>
+                    </div>
+                </div>
+                <div class="program-content">
+                    <p>Konten-konten timeless bertema antikorupsi yang menghibur sekaligus mengedukasi masyarakat dalam berbagai format media.</p>
+                    <a href="https://example.com/konten" target="_blank" class="program-button">
+                        Jelajahi Konten <i class="fas fa-play-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media" id="media">
+        <div class="social-container">
+            <h2 class="section-title light animate-on-scroll">Media Sosial Kami</h2>
+            <p class="section-subtitle light animate-on-scroll">Ikuti perkembangan terbaru kampanye antikorupsi melalui kanal media sosial kami</p>
+            
+            <div class="social-grid">
+                <!-- Instagram 1 -->
+                <div class="social-card animate-on-scroll">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>@SuaraAntikorupsi.KPK</p>
+                    <a href="https://instagram.com/SuaraAntikorupsi.KPK" target="_blank" class="social-link">
+                        Kunjungi Profil <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Youtube -->
+                <div class="social-card animate-on-scroll">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>@SuaraAntikorupsi</p>
+                    <a href="https://youtube.com/@SuaraAntikorupsi" target="_blank" class="social-link">
+                        Kunjungi Channel <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- TikTok -->
+                <div class="social-card animate-on-scroll">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok</h3>
+                    <p>@suara.antikorupsi</p>
+                    <a href="https://tiktok.com/@SuaraAntikorupsi" target="_blank" class="social-link">
+                        Kunjungi Profil <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Instagram 2 -->
+                <div class="social-card animate-on-scroll">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>@acffest.kpk</p>
+                    <a href="https://instagram.com/acffest.kpk" target="_blank" class="social-link">
+                        Kunjungi Profil <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <!-- Threads -->
+                <div class="social-card animate-on-scroll">
+                    <div class="social-icon">
+                        <img src="Threads.png" alt="Threads" style="width: 48px; height: 48px;">
+                    </div>
+                    <h3>Threads</h3>
+                    <p>@suaraantikorupsi.kpk</p>
+                    <a href="https://threads.net/@suaraantikorupsi.kpk" target="_blank" class="social-link">
+                        Kunjungi Profil <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Tentang Suara Antikorupsi</h3>
+                <p>Suara Antikorupsi adalah kanal sosialisasi dan kampanye antikorupsi yang bertujuan untuk membangun kesadaran masyarakat tentang pentingnya integritas dan pemberantasan korupsi di Indonesia.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Program Kami</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-road"></i> Jelajah Negeri Bangun Antikorupsi</a></li>
+                    <li><a href="#"><i class="fas fa-podcast"></i> Benar-Benar Podcast</a></li>
+                    <li><a href="#"><i class="fas fa-ad"></i> Pariwara Antikorupsi</a></li>
+                    <li><a href="#"><i class="fas fa-film"></i> Anti-corruption Film Festival</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Lebih Dekat</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Kontak</h3>
+                <ul>
+                    <li><a href="mailto:suaraantikorupsi.id@gmail.com"><i class="fas fa-envelope"></i> suaraantikorupsi.id@gmail.com</a></li>
+                    <li><a href="tel:+622112345678"><i class="fas fa-phone"></i> (021) 1234-5678</a></li>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Gedung Pusat Edukasi Antikorupsi KPK, Jakarta Selatan</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Berlangganan Newsletter</h3>
+                <p>Dapatkan update terbaru tentang program dan kegiatan kami.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email Anda" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Suara Antikorupsi - Komisi Pemberantasan Korupsi Republik Indonesia. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Animasi on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.animate-on-scroll').forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close mobile menu if open
+                    document.getElementById('mobileNav').classList.remove('active');
+                    document.getElementById('overlay').classList.remove('active');
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileNav = document.getElementById('mobileNav');
+            const overlay = document.getElementById('overlay');
+            
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+            });
+            
+            closeMenu.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+            
+            overlay.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
