@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suara Antikorupsi - Bersama Bangun Indonesia Bebas Korupsi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600;700&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #FFD700;
+            --black: #000000;
+            --maroon: #8B0000;
+            --white: #FFFFFF;
+            --light-gold: #FFF9C4;
+            --dark-gold: #FFB700;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 24px;
+            text-transform: uppercase;
+            color: var(--black);
+        }
+        
+        .logo-text span {
+            color: var(--maroon);
+            display: block;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--maroon);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--maroon);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+            color: var(--white);
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--black);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--black);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .wave-animation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23FFD700" fill-opacity="1" d="M0,128L48,117.3C96,107,192,85,288,101.3C384,117,480,171,576,170.7C672,171,768,117,864,106.7C960,96,1056,128,1152,138.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: wave 12s linear infinite;
+        }
+        
+        /* Programs Section */
+        .section-title {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin: 60px 0 40px;
+            position: relative;
+            color: var(--maroon);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .programs {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            border-left: 5px solid var(--maroon);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .program-icon {
+            height: 150px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: var(--black);
+        }
+        
+        .program-content {
+            padding: 25px;
+        }
+        
+        .program-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--maroon);
+        }
+        
+        .program-content p {
+            margin-bottom: 20px;
+            color: #444;
+        }
+        
+        .program-button {
+            display: inline-block;
+            background: var(--maroon);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .program-button:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        /* Social Media Section */
+        .social-media {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--dark-gold) 100%);
+            padding: 60px 0;
+        }
+        
+        .social-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .social-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--black);
+        }
+        
+        .social-icon.instagram {
+            color: #E1306C;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .social-icon.youtube {
+            color: #FF0000;
+        }
+        
+        .social-icon.tiktok {
+            color: #000000;
+        }
+        
+        .social-icon.website {
+            color: var(--maroon);
+        }
+        
+        .social-card h3 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+            color: var(--maroon);
+        }
+        
+        .social-card p {
+            font-weight: 600;
+            color: var(--black);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: var(--gold);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--maroon);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--gold);
+            padding-left: 5px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        .newsletter-form button {
+            background: var(--maroon);
+            color: var(--white);
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes wave {
+            0% {
+                background-position-x: 0;
+            }
+            100% {
+                background-position-x: 1000px;
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <div class="logo-text">
+                    SUARA
+                    <span>ANTIKORUPSI</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#programs">Program</a></li>
+                    <li><a href="#media">Media Sosial</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Bersuara Demi Indonesia Bebas Korupsi</h1>
+            <p>Bergabunglah dalam gerakan edukasi dan kampanye antikorupsi untuk membangun bangsa yang lebih baik</p>
+            <a href="#programs" class="cta-button">Jelajahi Kampanye</a>
+        </div>
+        <div class="wave-animation"></div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs">
+        <h2 class="section-title">Program Kampanye Kami</h2>
+        <div class="programs">
+            <!-- Program 1 -->
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-road"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Roadshow KPK Jelajah Negeri Bangun Antikorupsi (JNBA)</h3>
+                    <p>Festival edukasi antikorupsi ke daerah-daerah untuk membangun kesadaran masyarakat tentang bahaya korupsi.</p>
+                    <a href="#" class="program-button">Lihat Jadwal</a>
+                </div>
+            </div>
+            
+            <!-- Program 2 -->
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-podcast"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Benar-Benar Podcast</h3>
+                    <p>Podcast bersama KOL atau tokoh menarik untuk anak muda dengan tema antikorupsi dalam format yang santai dan inspiratif.</p>
+                    <a href="#" class="program-button">Dengarkan Sekarang</a>
+                </div>
+            </div>
+            
+            <!-- Program 3 -->
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-ad"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Pariwara Antikorupsi</h3>
+                    <p>Edukasi dan kompetisi iklan antikorupsi bersama Pemda dan BUMN untuk menciptakan konten kreatif yang menginspirasi.</p>
+                    <a href="#" class="program-button">Ikuti Kompetisi</a>
+                </div>
+            </div>
+            
+            <!-- Program 4 -->
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-film"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Anti-corruption Film Festival (ACFFEST)</h3>
+                    <p>Festival film bertema antikorupsi untuk mempromosikan nilai-nilai integritas melalui karya sinematik.</p>
+                    <a href="https://acffest.com" target="_blank" class="program-button">Kunjungi Website</a>
+                </div>
+            </div>
+            
+            <!-- Program 5 -->
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Lebih Dekat</h3>
+                    <p>Bincang hangat dengan tokoh inspiratif yang berintegritas dan berdedikasi dalam memerangi korupsi.</p>
+                    <a href="#" class="program-button">Lihat Jadwal</a>
+                </div>
+            </div>
+            
+            <!-- Program 6 -->
+            <div class="program-card">
+                <div class="program-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <div class="program-content">
+                    <h3>Konten Edukasi & Entertainment</h3>
+                    <p>Konten-konten timeless bertema antikorupsi yang menghibur sekaligus mengedukasi masyarakat.</p>
+                    <a href="#" class="program-button">Jelajahi Konten</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-media" id="media">
+        <div class="social-container">
+            <h2 class="section-title">Ikuti Kami di Media Sosial</h2>
+            <div class="social-grid">
+                <!-- Instagram 1 -->
+                <div class="social-card">
+                    <div class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>@SuaraAntikorupsi.KPK</p>
+                </div>
+                
+                <!-- Youtube -->
+                <div class="social-card">
+                    <div class="social-icon youtube">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>@SuaraAntikorupsi</p>
+                </div>
+                
+                <!-- TikTok -->
+                <div class="social-card">
+                    <div class="social-icon tiktok">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok</h3>
+                    <p>@SuaraAntikorupsi</p>
+                </div>
+                
+                <!-- Instagram 2 -->
+                <div class="social-card">
+                    <div class="social-icon instagram">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>@acffest.kpk</p>
+                </div>
+                
+                <!-- Website -->
+                <div class="social-card">
+                    <div class="social-icon website">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Website</h3>
+                    <p>acffest.com</p>
+                </div>
+                
+                <!-- Threads -->
+                <div class="social-card">
+                    <div class="social-icon">
+                        <i class="fab fa-threads"></i>
+                    </div>
+                    <h3>Threads</h3>
+                    <p>@suaraantikorupsi.kpk</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Tentang Suara Antikorupsi</h3>
+                <p>Suara Antikorupsi adalah kanal sosialisasi dan kampanye antikorupsi yang bertujuan untuk membangun kesadaran masyarakat tentang pentingnya integritas dan pemberantasan korupsi di Indonesia.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Program Kami</h3>
+                <ul>
+                    <li><a href="#">Jelajah Negeri Bangun Antikorupsi (JNBA)</a></li>
+                    <li><a href="#">Benar-Benar Podcast</a></li>
+                    <li><a href="#">Pariwara Antikorupsi</a></li>
+                    <li><a href="#">Anti-corruption Film Festival</a></li>
+                    <li><a href="#">Lebih Dekat</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Kontak</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@suaraantikorupsi.id</li>
+                    <li><i class="fas fa-phone"></i> (021) 1234-5678</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Gedung KPK, Jl. Kuningan Persada Kav. 4, Jakarta Selatan</li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Berlangganan Newsletter</h3>
+                <p>Dapatkan update terbaru tentang program dan kegiatan kami.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Email Anda" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Suara Antikorupsi - Komisi Pemberantasan Korupsi Republik Indonesia. Semua Hak Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeInUp 1s ease-out forwards`;
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            document.querySelectorAll('.program-card, .social-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
